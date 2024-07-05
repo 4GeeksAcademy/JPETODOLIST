@@ -7,9 +7,10 @@ const Lista = () => {
     return (
         <>
             <div className="d-flex flex-column align-items-center">
-                <h1>Lista de tareas</h1>
-                <ul className="inline">
-                    <li>
+                <h1 className="mt-5">Lista de tareas</h1>
+                <div className="inline">
+                    <ul className="list-group">
+                        
                         <input
                             type="text"
                             placeholder="añade tarea"
@@ -22,23 +23,33 @@ const Lista = () => {
                             value={valorInput}
                             onChange={(e) => setValorInput(e.target.value)}
                         />
-                    </li>
+                    </ul>
                     {tareas.length === 0 ? (
-                        <li>No hay tareas</li>
+                        <p className="text-center">
+                            No hay tareas
+                        </p>
                     ) : (
-                        tareas.map((item, index) => (
-                            <li key={index} className="nuevatarea">
-                                {item}
-                                <button
-                                    className="btn btn-danger eliminar-btn"
-                                    onClick={() => setTareas(tareas.filter((t, currentIndex) => index !== currentIndex))}
-                                >
-                                    Eliminar
-                                </button>
-                            </li>
-                        ))
-                    )}
-                </ul>
+                            <>
+                                {tareas.map((item, index) => (
+                                    <ul key={index} className="nuevatarea">
+                                        {item}
+                                        <button
+                                            className="btn btn-danger eliminar-btn"
+                                            onClick={() => setTareas(tareas.filter((t, currentIndex) => index !== currentIndex))}
+                                        >
+                                            Eliminar
+                                        </button>
+                                    </ul>
+                                ))}
+                                {/* Mostrar el número total de tareas */}
+                                <ul className="text-center">
+                                    Total de tareas: {tareas.length}
+                                </ul> 
+    
+                            </>
+                        
+                        )}
+                </div>
             </div>
         </>
     );
