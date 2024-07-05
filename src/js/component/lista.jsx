@@ -5,10 +5,10 @@ const Lista = () => {
     const [valorInput, setValorInput] = useState("");
 
     return (
-            <div className="d-flex flex-column align-items-center">
+            <div className="container d-flex flex-column align-items-center">
                 <h1 className="mt-5">Lista de tareas</h1>
                     <ul className="list-group">
-                        <li class="list-group-item ">
+                        <li class="list-group-item hoja ">
                             <input
                                     type="text"
                                     placeholder="añade tarea"
