@@ -1,56 +1,60 @@
 import React, { useState } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Lista = () => {
-    // Definimos dos estados: uno para almacenar la lista de tareas y otro para manejar el valor del input.
     const [tareas, setTareas] = useState([]);
     const [valorInput, setValorInput] = useState("");
 
     return (
         <>
             <div className="d-flex flex-column align-items-center">
-                <h1>Lista de tareas</h1>
-                <ul className="list-group w-50">
-                    <li className="list-group-item">
-                        {/* Input para añadir una nueva tarea */}
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Añade tarea"
-                            onKeyUp={(e) => {
-                                // Si se presiona la tecla Enter, añadimos la tarea a la lista
-                                if (e.key === "Enter" && valorInput.trim() !== "") {
-                                    setTareas(tareas.concat(valorInput)); // Añadimos la nueva tarea a la lista
-                                    setValorInput(""); // Limpiamos el input
-                                }
-                            }}
-                            value={valorInput} // Valor del input controlado por el estado
-                            onChange={(e) => setValorInput(e.target.value)} // Actualizamos el estado con el valor del input
-                        />
-                    </li>
+                <h1 className="mt-5">Lista de tareas</h1>
+                <div className="inline">
+                    <ul className="list-group">
+                        <li class="list-group-item ">
+                            <input
+                                    type="text"
+                                    placeholder="añade tarea"
+                                    onKeyUp={(e) => {
+                                        if (e.key === "Enter") {
+                                            setTareas(tareas.concat(valorInput));
+                                            setValorInput("");
+                                        }
+                                    }}
+                                    value={valorInput}
+                                    onChange={(e) => setValorInput(e.target.value)}
+                                />
+                        </li>
+                    </ul>
                     {tareas.length === 0 ? (
-                        <li className="list-group-item">No hay tareas</li> // Si no hay tareas, mostramos este mensaje
+                        <p className="text-center">
+                            No hay tareas
+                        </p>
                     ) : (
-                        <>
-                            {tareas.map((item, index) => (
-                                <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
-                                    <span>{item}</span> {/* Mostramos la tarea */}
-                                    <button
-                                        className="btn btn-danger btn-sm"
-                                        // Botón para eliminar la tarea
-                                        onClick={() => setTareas(tareas.filter((t, currentIndex) => index !== currentIndex))}
-                                    >
-                                        Eliminar
-                                    </button>
-                                </li>
-                            ))}
-                            <li className="list-group-item">Total de tareas: {tareas.length}</li> {/* Mostrar el número total de tareas */}
-                        </>
-                    )}
-                </ul>
+                            <>
+                                {tareas.map((item, index) => (
+                                    <ul key={index} className="nuevatarea">
+                                        {item}
+                                        <button
+                                            className="btn btn-danger eliminar-btn"
+                                            onClick={() => setTareas(tareas.filter((t, currentIndex) => index !== currentIndex))}
+                                        >
+                                            Eliminar
+                                        </button>
+                                    </ul>
+                                ))}
+                                {/* Mostrar el número total de tareas */}
+                                <ul className="text-center">
+                                    Total de tareas: {tareas.length}
+                                </ul> 
+    
+                            </>
+                        
+                        )}
+                </div>
             </div>
         </>
     );
 };
 
 export default Lista;
+

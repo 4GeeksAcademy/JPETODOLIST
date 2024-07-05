@@ -5,26 +5,23 @@ const Lista = () => {
     const [valorInput, setValorInput] = useState("");
 
     return (
-        <>
             <div className="d-flex flex-column align-items-center">
                 <h1 className="mt-5">Lista de tareas</h1>
-                <div className="inline">
                     <ul className="list-group">
-                        
-                        <input
-                            type="text"
-                            placeholder="añade tarea"
-                            onKeyUp={(e) => {
-                                if (e.key === "Enter") {
-                                    setTareas(tareas.concat(valorInput));
-                                    setValorInput("");
-                                }
-                            }}
-                            value={valorInput}
-                            onChange={(e) => setValorInput(e.target.value)}
-                        />
-                    </ul>
-                    {tareas.length === 0 ? (
+                        <li class="list-group-item ">
+                            <input
+                                    type="text"
+                                    placeholder="añade tarea"
+                                    onKeyUp={(e) => {
+                                        if (e.key === "Enter") {
+                                            setTareas(tareas.concat(valorInput));
+                                            setValorInput("");
+                                        }
+                                    }}
+                                    value={valorInput}
+                                    onChange={(e) => setValorInput(e.target.value)}
+                                />
+                                 {tareas.length === 0 ? (
                         <p className="text-center">
                             No hay tareas
                         </p>
@@ -45,13 +42,11 @@ const Lista = () => {
                                 <ul className="text-center">
                                     Total de tareas: {tareas.length}
                                 </ul> 
-    
                             </>
-                        
                         )}
-                </div>
-            </div>
-        </>
+                        </li>
+                    </ul>
+        </div>
     );
 };
 
