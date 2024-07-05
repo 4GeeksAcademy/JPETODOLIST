@@ -40,7 +40,12 @@ const Lista = () => {
                                 ))}
                                 {/* Mostrar el número total de tareas */}
                                 <ul className="text-center">
-                                    Total de tareas: {tareas.length}
+                                    
+                                    {tareas.length === 1  ? 
+                                        (<p> 1 Tarea </p>) 
+                                        : (<p>{tareas.length} Tareas</p>)
+                                    }
+                                    
                                 </ul> 
                             </>
                         )}
